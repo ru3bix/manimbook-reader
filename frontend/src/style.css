@@ -1,163 +1,173 @@
 :root {
-    --scale-factor: 1;
+  --scale-factor: 1;
 }
 
 html {
-    text-align: center;
-    background-color: #444444;
+  text-align: center;
+  background-color: #444444;
 }
 
 body {
-    margin: 0;
-    color: white;
-    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
+  margin: 0;
+  color: white;
+  font-family:
+    "Nunito",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 @font-face {
-    font-family: "Nunito";
-    font-style: normal;
-    font-weight: 400;
-    src: local(""),
-        url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local(""),
+    url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
 }
 
 #app {
-    height: 100vh;
-    text-align: center;
+  height: 100vh;
+  text-align: center;
 }
 
-nav>button {
-    height: 100%;
-    background-color: #222222;
-    color: #f1f1f1;
-    width: 5rem;
-    border: none;
-    outline: inherit;
-    border-radius: 0;
+nav > button {
+  height: 100%;
+  background-color: #222222;
+  color: #f1f1f1;
+  width: 5rem;
+  border: none;
+  outline: inherit;
+  border-radius: 0;
 }
 
 button,
 svg {
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #openContents {
-    background-color: #333333;
-    color: #f1f1f1;
+  background-color: #333333;
+  color: #f1f1f1;
 }
 
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 #chapterTitle {
-    width: 100%;
+  width: 100%;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #c0c0c0;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 70px;
-    text-align: left;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #c0c0c0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 70px;
+  text-align: left;
 }
 
 .sidebar button {
-    padding: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    background-color: #444444;
-    border: none;
-    width: 100%;
-    border-bottom: 2px solid #818181;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  background-color: #444444;
+  border: none;
+  width: 100%;
+  border-bottom: 2px solid #818181;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
 .sidebar .active {
-    color: #f1f1f1;
-    background-color: #111111;
+  color: #f1f1f1;
+  background-color: #111111;
 }
 
 .sidebar button:hover {
-    color: #f1f1f1;
+  color: #f1f1f1;
 }
 
 .sidebar .closebtn {
-    position: absolute;
-    padding: 10px;
-    text-decoration: none;
-    top: 0;
-    color: #444444;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    border: none;
-    background-color: inherit;
+  position: absolute;
+  padding: 10px;
+  text-decoration: none;
+  top: 0;
+  color: #444444;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  border: none;
+  background-color: inherit;
 }
 
 .sidebar h2 {
-    position: absolute;
-    color: #444444;
-    top: 0;
-    left: 0;
-    font: 36px;
-    margin-left: 10px;
+  position: absolute;
+  color: #444444;
+  top: 0;
+  left: 0;
+  font: 36px;
+  margin-left: 10px;
 }
 
 .sidebar .closebtn:hover {
-    color: #818181;
+  color: #818181;
 }
 
-
 .container {
-    position: absolute;
-    top: 50px;
-    height: calc(100% - 50px);
-    width: 100%;
-    padding: 0;
+  position: absolute;
+  top: 50px;
+  height: calc(100% - 50px);
+  width: 100%;
+  padding: 0;
 }
 
 .maximized {
-    height: 100%;
-    top: 0;
+  height: 100%;
+  top: 0;
 }
 
-.container>iframe {
-    border: none;
-    background-color: #a6a6a6;
-    width: calc(1/var(--scale-factor) * 100%);
-    height: calc(1/var(--scale-factor) * 100%);
-    transform: scale(var(--scale-factor));
-    -moz-transform: scale(var(--scale-factor));
-    -moz-transform-origin: top center;
-    transform-origin: top center;
-    -o-transform: scale(var(--scale-factor));
-    -o-transform-origin: top center;
-    -webkit-transform: scale(var(--scale-factor));
-    -webkit-transform-origin: top center;
+.container > iframe {
+  border: none;
+  background-color: #a6a6a6;
+  width: calc(1 / var(--scale-factor) * 100%);
+  height: calc(1 / var(--scale-factor) * 100%);
+  transform: scale(var(--scale-factor));
+  -moz-transform: scale(var(--scale-factor));
+  -moz-transform-origin: top center;
+  transform-origin: top center;
+  -o-transform: scale(var(--scale-factor));
+  -o-transform-origin: top center;
+  -webkit-transform: scale(var(--scale-factor));
+  -webkit-transform-origin: top center;
 }
