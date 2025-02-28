@@ -5,5 +5,3 @@ import {book} from '../models';
 export function GetBook():Promise<book.Book>;
 
 export function GetPort():Promise<number>;
-
-export function Greet(arg1:string):Promise<string>;

@@ -8,13 +8,15 @@ import { book } from "../wailsjs/go/models";
 let currentChapter: number | null = 0;
 let port: number | null = null;
 
-EventsOn("bookOpen", async () => {
-  const book = await GetBook();
-  port = await GetPort();
-  currentChapter = 0;
-  removeChapters();
-  appendChapters(book.chapters, book);
-  changeChapter(currentChapter, book);
+EventsOn("bookOpen", () => {
+  Promise.all([GetBook(), GetPort()]).then((res) => {
+    const book = res[0];
+    port = res[1];
+    currentChapter = 0;
+    removeChapters();
+    appendChapters(book.chapters, book);
+    changeChapter(currentChapter, book);
+  });
 });
 
 function changeChapter(ch: number, book: book.Book) {
@@ -23,7 +25,7 @@ function changeChapter(ch: number, book: book.Book) {
   const frame = document.getElementById("chapter") as HTMLIFrameElement;
   const contentsBtn = document.getElementById(`btn-chapter-${ch}`);
   if (title) {
-    title.innerText = "Chapter: " + book.chapters[ch];
+    title.innerText = book.chapters[ch];
   }
   if (contentsBtn) {
     const prevActive = document.querySelector(".active");
@@ -76,14 +78,14 @@ const prevBtn = document.getElementById("prevBtn");
 if (nxtBtn && prevBtn) {
   nxtBtn.onclick = async () => {
     const book = await GetBook();
-    if (currentChapter != null && book.chapters.length > currentChapter) {
+    if (currentChapter !== null && book.chapters.length > currentChapter) {
       currentChapter += 1;
       changeChapter(currentChapter, book);
     }
   };
   prevBtn.onclick = async () => {
     const book = await GetBook();
-    if (currentChapter && book.chapters.length != 0) {
+    if (currentChapter && book.chapters.length !== 0) {
       currentChapter -= 1;
       changeChapter(currentChapter, book);
     }
@@ -117,8 +119,8 @@ function ZoomOut(n: number) {
 }
 
 function setZoom(n: number) {
-  const r = document.querySelector(":root") as HTMLElement;
-  r.style.setProperty("--scale-factor", n.toString());
+  const root = document.querySelector(":root") as HTMLElement;
+  root.style.setProperty("--scale-factor", n.toString());
 }
 
 function showNavbar() {
