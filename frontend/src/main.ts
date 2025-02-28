@@ -8,15 +8,17 @@ import { book } from "../wailsjs/go/models";
 let currentChapter: number | null = 0;
 let port: number | null = null;
 
-EventsOn("bookOpen", async () => {
-  await Promise.all([GetBook(), GetPort()]).then((res) => {
-    const book = res[0];
-    port = res[1];
-    currentChapter = 0;
-    removeChapters();
-    appendChapters(book.chapters, book);
-    changeChapter(currentChapter, book);
-  });
+EventsOn("bookOpen", () => {
+  Promise.all([GetBook(), GetPort()])
+    .then((res) => {
+      const book = res[0];
+      port = res[1];
+      currentChapter = 0;
+      removeChapters();
+      appendChapters(book.chapters, book);
+      changeChapter(currentChapter, book);
+    })
+    .catch((err) => console.error(err));
 });
 
 function changeChapter(ch: number, book: book.Book) {
@@ -101,20 +103,20 @@ if (openBtn && closeBtn) {
 }
 
 function ZoomIn(n: number) {
-  const r = document.querySelector(":root") as HTMLElement;
-  if (r) {
-    const rs = getComputedStyle(r);
+  const root = document.querySelector(":root") as HTMLElement;
+  if (root) {
+    const rs = getComputedStyle(root);
     const zoom = rs.getPropertyValue("--scale-factor") ?? 1.0;
-    r.style.setProperty("--scale-factor", (parseFloat(zoom) + n).toString());
+    root.style.setProperty("--scale-factor", (parseFloat(zoom) + n).toString());
   }
 }
 
 function ZoomOut(n: number) {
-  const r = document.querySelector(":root") as HTMLElement;
-  if (r) {
-    const rs = getComputedStyle(r);
+  const root = document.querySelector(":root") as HTMLElement;
+  if (root) {
+    const rs = getComputedStyle(root);
     const zoom = rs.getPropertyValue("--scale-factor") ?? 1.0;
-    r.style.setProperty("--scale-factor", (parseFloat(zoom) - n).toString());
+    root.style.setProperty("--scale-factor", (parseFloat(zoom) - n).toString());
   }
 }
 
