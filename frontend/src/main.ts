@@ -9,7 +9,7 @@ let currentChapter: number | null = 0;
 let port: number | null = null;
 
 EventsOn("bookOpen", () => {
-  Promise.all([GetBook(), GetPort()]).then((res) => {
+  void Promise.all([GetBook(), GetPort()]).then((res) => {
     const book = res[0];
     port = res[1];
     currentChapter = 0;
