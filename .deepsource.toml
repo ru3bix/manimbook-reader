@@ -1,5 +1,10 @@
 version = 1
 
+exclude_patterns = [
+  "frontend/wailsjs/**/*.js",
+  "frontend/wailsjs/**/*.ts"
+]
+
 [[analyzers]]
 name = "javascript"
 
