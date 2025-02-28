@@ -8,8 +8,8 @@ import { book } from "../wailsjs/go/models";
 let currentChapter: number | null = 0;
 let port: number | null = null;
 
-EventsOn("bookOpen", () => {
-  void Promise.all([GetBook(), GetPort()]).then((res) => {
+EventsOn("bookOpen", async () => {
+  await Promise.all([GetBook(), GetPort()]).then((res) => {
     const book = res[0];
     port = res[1];
     currentChapter = 0;
